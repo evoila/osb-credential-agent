@@ -3,9 +3,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/evoila/osb-credential-agent/credhub"
 	"io/ioutil"
 	"net/http"
-	"osb-credential-agent/credhub"
 )
 
 func GenerateAndInterpolateCredentials(w http.ResponseWriter, r *http.Request) {

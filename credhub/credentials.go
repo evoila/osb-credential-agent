@@ -6,7 +6,7 @@ import (
 	"code.cloudfoundry.org/credhub-cli/credhub/credentials"
 	"code.cloudfoundry.org/credhub-cli/credhub/credentials/values"
 	"fmt"
-	"osb-credential-agent/config"
+	"github.com/evoila/osb-credential-agent/config"
 )
 
 func TestConnection(agentConfig *config.Config) {

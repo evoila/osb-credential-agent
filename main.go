@@ -1,12 +1,12 @@
 package main
 
 import (
+	"github.com/evoila/osb-credential-agent/config"
+	"github.com/evoila/osb-credential-agent/credhub"
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 	"os"
-	"osb-credential-agent/config"
-	"osb-credential-agent/credhub"
 )
 
 type Meta struct {
@@ -17,7 +17,7 @@ type Response struct {
 }
 
 var Config *config.Config
-var Service *ServiceHandler
+var Service ServiceHandler
 
 func handleRequests() {
 	router := mux.NewRouter().StrictSlash(true)

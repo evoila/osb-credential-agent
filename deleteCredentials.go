@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/evoila/osb-credential-agent/credhub"
 	"net/http"
-	"osb-credential-agent/credhub"
 )
+
 
 func DeleteCredentials(w http.ResponseWriter, r *http.Request) {
 	bindingId := r.FormValue("binding-id")
