@@ -1,0 +1,1 @@
+osb-credential-agent
