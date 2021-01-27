@@ -1,0 +1,9 @@
+---
+uaa:
+  uaa_endpoint: "https://35.196.32.64:8443"
+  client_name: "credhub_client"
+  client_secret: "secret"
+credhub_endpoint: "https://localhost:9000"
+skip_ssl_validation: true
+client_identifier: osb-service-broker
+service_identifier: service-id
