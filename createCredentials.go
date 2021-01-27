@@ -16,14 +16,9 @@ func GenerateAndInterpolateCredentials(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	//values, err := Service.CreateCredentials()
-	//	if err != nil {
-	//		ErrHandler(w, "Script failed to create Credentials!", err)
-	//	}
-
-	values := map[string]interface{}{
-		"username": "test",
-		"password": "test",
+	values, err := Service.CreateCredentials()
+	if err != nil {
+		ErrHandler(w, "Script failed to create Credentials!", err)
 	}
 
 	credentials, err := credhub.SetCredentials(meta.BindingGuid, values, Config)

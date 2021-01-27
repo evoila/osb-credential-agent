@@ -12,7 +12,12 @@ func DeleteCredentials(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		ErrHandler(w, "could not retrieve credentials", err)
 	}
+
 	fmt.Printf("%+v\n", credentials)
+	err = Service.DeleteCredentials(credentials.Value)
+	if err != nil {
+		ErrHandler(w, "Failed to remove credentials from Service!", err)
+	}
 
 	err = credhub.DeleteCredentials(bindingId, Config)
 	if err != nil {

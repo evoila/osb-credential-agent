@@ -17,7 +17,7 @@ type Response struct {
 }
 
 var Config *config.Config
-var Service ServiceHandler
+var Service *ServiceHandler
 
 func handleRequests() {
 	router := mux.NewRouter().StrictSlash(true)
@@ -33,6 +33,9 @@ func ErrHandler(w http.ResponseWriter, response string, err error) {
 
 func main() {
 	path := os.Args[1]
+
+	Service = DummyCredentialHandler{"Test"}
+
 	Config = config.ReadConfig(path)
 	credhub.TestConnection(Config)
 	handleRequests()
