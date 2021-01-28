@@ -19,11 +19,13 @@ func GenerateAndInterpolateCredentials(w http.ResponseWriter, r *http.Request) {
 	values, err := Service.CreateCredentials()
 	if err != nil {
 		ErrHandler(w, "Script failed to create Credentials!", err)
+		return
 	}
 
 	credentials, err := credhub.SetCredentials(meta.BindingGuid, values, Config)
 	if err != nil {
 		ErrHandler(w, "Failed to save Credentials in Credhub", err)
+		return
 	}
 
 	fmt.Printf("%+v\n", credentials)

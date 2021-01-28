@@ -33,8 +33,8 @@ func handleRequests() {
 func ErrHandler(w http.ResponseWriter, response string, error error) {
 	fmt.Print(error)
 	w.WriteHeader(http.StatusInternalServerError)
-	w.Write([]byte(response))
-	//	panic(err)
+	_, err := w.Write([]byte(response))
+	panic(err)
 }
 
 func main() {
