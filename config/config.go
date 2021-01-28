@@ -1,18 +1,19 @@
 package config
 
 import (
+	"github.com/evoila/osb-credential-agent/services"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 )
 
 type Config struct {
-	Uaa                  Uaa    `yaml:"uaa"`
-	CredhubEndpoint      string `yaml:"credhub_endpoint"`
-	SlipSSLValidation    bool   `yaml:"skip_ssl_validation"`
-	CreateUserScriptPath string `yaml:"create_user_script_path"`
-	DeleteUserScriptPath string `yaml:"delete_userscript_path"`
-	ClientIdentifier     string `yaml:"client_identifier"`
-	ServiceIdentifier    string `yaml:"service_identifier"`
+	Uaa               Uaa                            `yaml:"uaa"`
+	CredhubEndpoint   string                         `yaml:"credhub_endpoint"`
+	SlipSSLValidation bool                           `yaml:"skip_ssl_validation"`
+	ClientIdentifier  string                         `yaml:"client_identifier"`
+	ServiceIdentifier string                         `yaml:"service_identifier"`
+	Port              int                            `yaml:"port"`
+	MongoDB           services.MongoDBServiceHandler `yaml:"mongodb"`
 }
 
 type Uaa struct {

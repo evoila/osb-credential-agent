@@ -7,3 +7,12 @@ credhub_endpoint: "https://localhost:9000"
 skip_ssl_validation: true
 client_identifier: osb-service-broker
 service_identifier: service-id
+
+port: 8082
+
+mongodb:
+  username: admin
+  password: adminPassword
+  hosts:
+    - localhost:27017
+  database: serviceIdentifier

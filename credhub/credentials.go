@@ -34,13 +34,14 @@ func SetCredentials(bindingId string, values values.JSON, config *config.Config)
 	return credHub.SetCredential(name, "JSON", values)
 }
 
-func GetCredentials(bindingId string, config *config.Config) (credentials.Credential, error) {
+func GetCredentials(bindingId string, config *config.Config) (credentials.JSON, error) {
 	credHub, err := credhubLogin(config)
 	if err != nil {
-		return credentials.Credential{}, err
+		return credentials.JSON{}, err
 	}
 	name := buildCredHubRef(bindingId, config)
-	return credHub.GetLatestVersion(name)
+
+	return credHub.GetLatestJSON(name)
 }
 
 func DeleteCredentials(bindingId string, config *config.Config) error {

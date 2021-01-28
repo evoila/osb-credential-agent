@@ -1,12 +1,10 @@
-package main
+package services
 
 import "github.com/dchest/uniuri"
 
-type DummyCredentialHandler struct{
-	name string
-}
+type DummyCredentialHandler struct{}
 
-func (h DummyCredentialHandler) DeleteCredentials(i interface{}) error {
+func (h DummyCredentialHandler) DeleteCredentials(json map[string]interface{}) error {
 	// Remove the Credentials from the Service
 	return nil
 }
