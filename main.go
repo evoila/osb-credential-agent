@@ -34,13 +34,13 @@ func ErrHandler(w http.ResponseWriter, response string, error error) {
 	fmt.Print(error)
 	w.WriteHeader(http.StatusInternalServerError)
 	w.Write([]byte(response))
-//	panic(err)
+	//	panic(err)
 }
 
 func main() {
 	path := os.Args[1]
 	Config = config.ReadConfig(path)
-	Service = &Config.MongoDB
+	Service = Config.SelectServiceHandler()
 
 	credhub.TestConnection(Config)
 	handleRequests()

@@ -10,6 +10,8 @@ service_identifier: service-id
 
 port: 8082
 
+service_handler: mongoDB
+
 mongodb:
   username: admin
   password: adminPassword
