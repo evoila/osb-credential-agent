@@ -5,22 +5,30 @@ import (
 	"code.cloudfoundry.org/credhub-cli/credhub/auth"
 	"code.cloudfoundry.org/credhub-cli/credhub/credentials"
 	"code.cloudfoundry.org/credhub-cli/credhub/credentials/values"
-	"fmt"
+	"code.cloudfoundry.org/credhub-cli/credhub/server"
 	"github.com/evoila/osb-credential-agent/config"
 )
 
-func TestConnection(agentConfig *config.Config) {
+func TestConnection(agentConfig *config.Config) (*server.Info, error) {
 	client, err := credhubLogin(agentConfig)
 	if err != nil {
 		panic(err)
 	}
-	info, err := client.Info()
+	return client.Info()
 
-	fmt.Printf("%+v\n", info)
 
 }
 
 func credhubLogin(config *config.Config) (*credhub.CredHub, error) {
+
+	if config.Uaa.UaaCert != "" {
+		credhub.CaCerts(config.Uaa.UaaCert)
+	}
+
+	if config.CredhubCert != "" {
+		credhub.CaCerts(config.CredhubCert)
+	}
+
 	return credhub.New(config.CredhubEndpoint, credhub.SkipTLSValidation(config.SlipSSLValidation),
 		credhub.Auth(auth.UaaClientCredentials(config.Uaa.ClientName, config.Uaa.ClientSecret)))
 }

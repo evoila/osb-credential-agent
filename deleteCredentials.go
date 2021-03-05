@@ -11,7 +11,8 @@ func DeleteCredentials(w http.ResponseWriter, r *http.Request) {
 	bindingId := r.FormValue("binding-id")
 	credentials, err := credhub.GetCredentials(bindingId, Config)
 	if err != nil {
-		ErrHandler(w, "could not retrieve credentials", err)
+		w.WriteHeader(http.StatusGone)
+		return
 	}
 
 	fmt.Printf("%+v\n", credentials)
@@ -26,4 +27,6 @@ func DeleteCredentials(w http.ResponseWriter, r *http.Request) {
 		ErrHandler(w, "could not delete credentials", err)
 		return
 	}
+
+	w.WriteHeader(http.StatusOK)
 }

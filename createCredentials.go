@@ -30,7 +30,7 @@ func GenerateAndInterpolateCredentials(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Printf("%+v\n", credentials)
 
-	response := Response{
+	response := CreateResponse{
 		CredhubRef: credentials.Name,
 	}
 	w.WriteHeader(http.StatusCreated)

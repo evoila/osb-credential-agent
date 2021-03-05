@@ -11,6 +11,7 @@ import (
 type Config struct {
 	Uaa               Uaa                            `yaml:"uaa"`
 	CredhubEndpoint   string                         `yaml:"credhub_endpoint"`
+	CredhubCert       string                         `yaml:"credhub_cert"`
 	SlipSSLValidation bool                           `yaml:"skip_ssl_validation"`
 	ClientIdentifier  string                         `yaml:"client_identifier"`
 	ServiceIdentifier string                         `yaml:"service_identifier"`
@@ -22,6 +23,7 @@ type Config struct {
 type Uaa struct {
 	ClientName   string `yaml:"client_name"`
 	ClientSecret string `yaml:"client_secret"`
+	UaaCert      string `yaml:"uaa_cert"`
 }
 
 func ReadConfig(path string) *Config {

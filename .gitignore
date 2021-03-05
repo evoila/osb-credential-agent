@@ -15,3 +15,5 @@
 # vendor/
 
 .idea/
+
+osb-credential-agent

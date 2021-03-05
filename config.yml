@@ -1,20 +1,32 @@
 ---
 uaa:
-  uaa_endpoint: "https://35.196.32.64:8443"
-  client_name: "credhub_client"
-  client_secret: "secret"
-credhub_endpoint: "https://localhost:9000"
+  uaa_endpoint: https://192.168.50.6:8443
+  client_name: credhub-admin
+  client_secret: quxqqlg62sdxg1kra8a2
+credhub_endpoint: https://192.168.50.6:8844
 skip_ssl_validation: true
-client_identifier: osb-service-broker
-service_identifier: service-id
+client_identifier: osb-dummy
+service_identifier: osbboshcredentialagent
+port: 8050
+service_handler: dummy
 
-port: 8082
 
-service_handler: mongoDB
+#uaa:
+#  uaa_endpoint: "https://35.196.32.64:8443"
+#  client_name: "credhub_client"
+#  client_secret: "secret"
+#credhub_endpoint: "https://localhost:9000"
+#skip_ssl_validation: true
+#client_identifier: osb-service-broker
+#service_identifier: service-id
 
-mongodb:
-  username: admin
-  password: adminPassword
-  hosts:
-    - localhost:27017
-  database: serviceIdentifier
+#port: 8082
+
+#service_handler: mongoDB
+
+#mongodb:
+#  username: admin
+#  password: adminPassword
+#  hosts:
+#    - localhost:27017
+#  database: serviceIdentifier

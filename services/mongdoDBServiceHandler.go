@@ -10,10 +10,11 @@ import (
 )
 
 type MongoDBServiceHandler struct {
-	Username string   `yaml:"username"`
-	Password string   `yaml:"password"`
-	Hosts    []string `yaml:"hosts"`
-	Database string   `yaml:"database"`
+	Username   string   `yaml:"username"`
+	Password   string   `yaml:"password"`
+	Hosts      []string `yaml:"hosts"`
+	Database   string   `yaml:"database"`
+	ReplicaSet string   `yaml:"replica_set"`
 }
 
 var ctx = context.TODO()
@@ -84,5 +85,5 @@ func (m *MongoDBServiceHandler) DeleteCredentials(json map[string]interface{}) e
 }
 
 func (m *MongoDBServiceHandler) createDbUri(user, pwd string) string {
-	return fmt.Sprintf("mongodb://%s:%s@%s/%s", user, pwd, m.Hosts[0], m.Database)
+	return fmt.Sprintf("mongodb://%s:%s@%s/%s?replicaSet=%s", user, pwd, m.Hosts[0], m.Database, m.ReplicaSet)
 }
